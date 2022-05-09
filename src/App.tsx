@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import AddItem from './components/AddItem';
 import DetailsPanel from './components/DetailsPanel';
-import { Item } from './components/todo.model';
+import { Item } from './models';
 import useLocalStorage from "./components/useLocalStorage";
 
 function App() {

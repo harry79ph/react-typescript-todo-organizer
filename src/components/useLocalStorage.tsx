@@ -1,6 +1,4 @@
-import { Item } from './todo.model';
-
-type stateSetter = React.Dispatch<React.SetStateAction<Item[]>>;
+import { Item, StateSetterType } from '../models';
 
 const useLocalStorage = () => {
 
@@ -29,7 +27,7 @@ const useLocalStorage = () => {
     });
   };
 
-  const retrieveFromLocal = (types: string[], setCandos: stateSetter, setTodos: stateSetter) => {
+  const retrieveFromLocal = (types: string[], setCandos: StateSetterType, setTodos: StateSetterType) => {
     types.forEach((type) => {
       let stateSetter = null;
       type === "cando" ? (stateSetter = setCandos) : (stateSetter = setTodos);
@@ -37,7 +35,7 @@ const useLocalStorage = () => {
       const loc_number = Number(loc_string);
       for (let i = 0; i < loc_number; i++) {
         const json = localStorage.getItem(type + i);
-        const arr = JSON.parse(String(json));
+        const arr = JSON.parse(json || "null");
         const [title, content] = [arr[0], arr[1]];
         stateSetter((prev) => [
           ...prev,

@@ -1,10 +1,8 @@
 import { useRef, useState } from "react";
 import useLocalStorage from "./useLocalStorage";
-import { Item } from './todo.model';
+import { Items } from '../models';
 
-interface AddItemProps {
-    candos: Item[];
-    todos: Item[]; 
+interface AddItemProps extends Items {
     onUserSubmit: (className: string, titleValue: string, contentValue: string, isActive: boolean) => void;
 }
 

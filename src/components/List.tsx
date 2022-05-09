@@ -1,4 +1,4 @@
-import { Item } from './todo.model';
+import { Item } from '../models';
 
 interface ListProps {
     state: Item[];

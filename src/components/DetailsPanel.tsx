@@ -1,11 +1,9 @@
 import List from './List';
-import { Item } from './todo.model';
+import { Item, Items, StateSetterType } from '../models';
 
-interface DetailsPanelProps {
-  candos: Item[];
-  todos: Item[];
-  setCandos: React.Dispatch<React.SetStateAction<Item[]>>;
-  setTodos: React.Dispatch<React.SetStateAction<Item[]>>;
+interface DetailsPanelProps extends Items {
+  setCandos: StateSetterType;
+  setTodos: StateSetterType;
   deleteItem: (item: Item) => void;
   onSwitch: (item: Item) => void;
 }
@@ -13,7 +11,7 @@ interface DetailsPanelProps {
 const DetailsPanel = ({ candos, todos, setCandos, setTodos, deleteItem, onSwitch }: DetailsPanelProps) => {
 
   const groups: string[] = ["candos", "todos"];
-
+  
   return (
     <div className="container">
       {groups.map((group, i) => {
