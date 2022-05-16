@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import AddItem from './components/AddItem';
 import DetailsPanel from './components/DetailsPanel';
-import { Item } from './models';
+import { Item } from './components/models';
 import useLocalStorage from "./components/useLocalStorage";
 
 function App() {

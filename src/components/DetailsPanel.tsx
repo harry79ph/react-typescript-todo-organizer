@@ -1,5 +1,5 @@
 import List from './List';
-import { Item, Items, StateSetterType } from '../models';
+import { Item, Items, StateSetterType } from './models';
 
 interface DetailsPanelProps extends Items {
   setCandos: StateSetterType;

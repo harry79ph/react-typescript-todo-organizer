@@ -1,4 +1,4 @@
-import { Item, StateSetterType } from '../models';
+import { Item, StateSetterType } from './models';
 
 const useLocalStorage = () => {
 

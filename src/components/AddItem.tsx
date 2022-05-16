@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import useLocalStorage from "./useLocalStorage";
-import { Items } from '../models';
+import { Items } from './models';
 
 interface AddItemProps extends Items {
     onUserSubmit: (className: string, titleValue: string, contentValue: string, isActive: boolean) => void;
