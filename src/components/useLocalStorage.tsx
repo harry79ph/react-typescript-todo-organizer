@@ -1,4 +1,4 @@
-import { Item, StateSetterType } from './models';
+import { Item } from './models';
 
 const useLocalStorage = () => {
 
@@ -27,27 +27,23 @@ const useLocalStorage = () => {
     });
   };
 
-  const retrieveFromLocal = (types: string[], setCandos: StateSetterType, setTodos: StateSetterType) => {
-    types.forEach((type) => {
-      let stateSetter = null;
-      type === "cando" ? (stateSetter = setCandos) : (stateSetter = setTodos);
-      const loc_string = localStorage.getItem(type + "_length");
-      const loc_number = Number(loc_string);
-      for (let i = 0; i < loc_number; i++) {
-        const json = localStorage.getItem(type + i);
-        const arr = JSON.parse(json || "null");
-        const [title, content] = [arr[0], arr[1]];
-        stateSetter((prev) => [
-          ...prev,
-          {
-            className: type + " disabled",
-            title: title,
-            content: content,
-            isActive: false,
-          },
-        ]);
-      }
-    });
+  const retrieveFromLocal = (type: string) => {
+
+    let items: Item[] = [];
+    const loc_string = localStorage.getItem(type + "_length");
+    const loc_number = Number(loc_string);
+    for (let i = 0; i < loc_number; i++) {
+      const json = localStorage.getItem(type + i);
+      const arr = JSON.parse(json || "null");
+      const [title, content] = [arr[0], arr[1]];
+      items.push({
+        className: type + " disabled",
+        title: title,
+        content: content,
+        isActive: false,
+      });
+    }
+    return items;
   };
   return { addToLocal, retrieveFromLocal };
 };

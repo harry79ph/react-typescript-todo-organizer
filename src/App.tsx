@@ -9,9 +9,12 @@ function App() {
   const [candos, setCandos] = useState<Item[]>([]);
   const [todos, setTodos] = useState<Item[]>([]);
   const { retrieveFromLocal } = useLocalStorage();
+  console.log(candos, todos);
+  
 
   useEffect(() => {
-    retrieveFromLocal(["cando", "todo"], setCandos, setTodos);
+    setCandos(retrieveFromLocal("cando"));
+    setTodos(retrieveFromLocal("todo"));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
